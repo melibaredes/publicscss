@@ -1,0 +1,85 @@
+@import "_flexcards.scss";
+@mixin cool-p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 40px;
+    font-style: italic;
+    color: rgb(0, 14, 14);
+    text-align: center;
+}
+
+@mixin cool-button {
+    width: 150px;
+    height: 20px;
+    cursor: pointer;
+    border: 1px solid white;
+    color: black;
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+body {
+    background-color: rgba($color: #537bfd, $alpha: 0.5);
+}
+
+p {
+    @include cool-p;
+}
+
+.boton {
+    &:hover {
+        filter: brightness(50%);
+        color: #ff002f;
+        font-weight: bold;
+    }
+    @include cool-button;
+    background-color: lightskyblue;
+    &-secundario {
+        @extend .boton;
+        background-color: white;
+        &-error {
+            @extend .boton;
+            background-color: rgb(250, 150, 150);
+            &:hover {
+                transform: scale(3);
+                color: #ff002f;
+                text-decoration: underline;
+                transition: transform 3s;
+                &::after {
+                    content: '!!!';
+                }
+                
+            }
+            
+        }
+    }
+}
+.card2 {
+    &:hover {
+        background-color: rgba($color: #5dec75, $alpha: 0.3);
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-style: normal;
+        width: 400px;
+        height: 700px;
+        transition: width 2s, height 2s;
+    }
+    &::after{
+        content: "♥";
+        text-align: center;
+        visibility: hidden;
+        }
+        
+        &:hover{
+            color: #ffffff;
+        
+            &::after{
+                content: "♥";
+                visibility: visible;
+                font-size: 90px;
+                padding: 500px 150px;
+            }
+        }
+
+}
